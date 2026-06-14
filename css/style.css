@@ -1,0 +1,372 @@
+/* ===================================
+   INSIGHTOPS LANDING PAGE
+   VERSION: PRODUCTION
+=================================== */
+
+:root {
+    --bg: #081A3A;
+    --card: #102B5A;
+    --primary: #1E7BFF;
+    --primary-hover: #4A95FF;
+    --text: #FFFFFF;
+    --muted: #A7B8D9;
+
+    --container: 1280px;
+    --radius: 16px;
+    --transition: 0.25s ease;
+}
+
+/* ===================================
+   RESET
+=================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===================================
+   NAVBAR
+=================================== */
+
+.navbar {
+    max-width: var(--container);
+
+    margin: 0 auto;
+    padding: 24px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+/*
+   Logo otimizada para navbar
+   usando o PNG horizontal recortado
+*/
+
+.nav-logo {
+    width: 260px;
+    height: auto;
+
+    display: block;
+
+    image-rendering: auto;
+
+    transition: opacity var(--transition);
+}
+
+.nav-logo:hover {
+    opacity: 0.95;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+nav a {
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition: color var(--transition);
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ===================================
+   HERO
+=================================== */
+
+.hero {
+    min-height: 70vh;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 0 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+
+    line-height: 1.1;
+
+    margin-bottom: 24px;
+}
+
+.hero p {
+    max-width: 850px;
+
+    color: var(--muted);
+
+    font-size: 1.2rem;
+
+    margin-bottom: 36px;
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 16px 34px;
+
+    border-radius: 14px;
+
+    background: var(--primary);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   SECTIONS
+=================================== */
+
+.section {
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 90px 20px;
+}
+
+.section h2 {
+    text-align: center;
+
+    font-size: 2rem;
+
+    margin-bottom: 50px;
+}
+
+/* ===================================
+   CARDS
+=================================== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 24px;
+}
+
+.card {
+    background: var(--card);
+
+    padding: 30px;
+
+    border-radius: var(--radius);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* ===================================
+   CONTACT
+=================================== */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 24px;
+
+    border-radius: var(--radius);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.contact-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.contact-card i {
+    font-size: 1.6rem;
+
+    color: var(--primary);
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+/* ===================================
+   TABLET
+=================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+    .nav-logo {
+        width: 190px;
+    }
+
+    nav {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        min-height: 65vh;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width: 480px) {
+
+    .nav-logo {
+        width: 160px;
+    }
+
+    nav {
+        gap: 24px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
