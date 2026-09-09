@@ -72,11 +72,6 @@ img {
     text-decoration: none;
 }
 
-/*
-   Logo otimizada para navbar
-   usando o PNG horizontal recortado
-*/
-
 .nav-logo {
     width: 260px;
     height: auto;
@@ -206,7 +201,7 @@ nav a:hover {
 }
 
 /* ===================================
-   CARDS
+   CARDS (SERVIÇOS)
 =================================== */
 
 .cards {
@@ -246,50 +241,53 @@ nav a:hover {
 }
 
 /* ===================================
-   CONTACT
+   CONTACT & SOCIAL (UNIFIED)
 =================================== */
 
-.contact-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
-
-    gap: 20px;
+.contact-section {
+    text-align: center;
 }
 
-.contact-card {
+.icon-links {
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
 
-    gap: 15px;
+.icon-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 24px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
 
-    border-radius: var(--radius);
-
-    background: var(--card);
-
-    color: var(--text);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--muted);
 
     text-decoration: none;
-
     transition:
-        transform var(--transition),
-        box-shadow var(--transition);
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
 }
 
-.contact-card:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.18);
+.icon-item i {
+    font-size: 1.5rem;
 }
 
-.contact-card i {
-    font-size: 1.6rem;
-
+.icon-item:hover,
+.icon-item:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
     color: var(--primary);
+    transform: translateY(-3px);
+    outline: none;
 }
 
 /* ===================================
@@ -368,5 +366,14 @@ footer p {
     .btn {
         width: 100%;
         max-width: 320px;
+    }
+
+    .icon-item {
+        width: 52px;
+        height: 52px;
+    }
+
+    .icon-item i {
+        font-size: 1.35rem;
     }
 }
