@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers com assets estáticos. Nada aqui executa código.
+  // Só a pasta ./public é publicada: .git, brand/ e arquivos de projeto ficam de fora.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "insightops-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
