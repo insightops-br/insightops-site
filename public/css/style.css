@@ -334,33 +334,6 @@ ul[role="list"] {
     height: 18px;
 }
 
-/* ---------- Princípios ---------- */
-
-.principios {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-    gap: 28px;
-}
-
-.principios dt {
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.principios dt::before {
-    content: "";
-    display: block;
-    width: 28px;
-    height: 3px;
-    border-radius: 2px;
-    background: var(--azul-claro);
-    margin-bottom: 14px;
-}
-
-.principios dd {
-    color: var(--suave);
-}
-
 /* ---------- Contato ---------- */
 
 .canais {
@@ -513,7 +486,6 @@ ul[role="list"] {
     }
 
     .cartao p,
-    .principios dd,
     .canal-valor,
     .intro,
     .hero-texto {
