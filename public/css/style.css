@@ -218,15 +218,26 @@ ul[role="list"] {
     transform: translateY(-2px);
 }
 
-.botao-sec {
-    background: transparent;
-    border-color: rgba(255, 255, 255, 0.22);
-    font-weight: 500;
+.botao:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
 }
 
-.botao-sec:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.45);
+.link-acao {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 8px;
+    color: var(--suave);
+    font-weight: 500;
+    text-underline-offset: 5px;
+    text-decoration-color: rgba(169, 186, 219, 0.45);
+}
+
+.link-acao:hover {
+    color: var(--texto);
+    text-decoration-color: currentColor;
 }
 
 /* ---------- Seções ---------- */
@@ -308,68 +319,95 @@ ul[role="list"] {
     color: var(--suave);
 }
 
-.projeto h3 {
-    font-size: 1.3rem;
-}
-
-.etiqueta {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.cartao .etiqueta {
-    color: var(--azul-claro);
-    margin-bottom: 0;
-}
-
-.projeto-topo {
+.projeto-nome {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
+    min-height: 48px;
+    margin-bottom: 14px;
 }
 
-.projeto-marca {
-    width: 40px;
-    height: 40px;
-    flex: none;
-    color: var(--texto);
+.logo-lente {
+    width: 236px;
+    height: auto;
 }
 
-.projeto-marca-jc {
-    width: 46px;
-    height: 34px;
-}
-
-.cartao .etiqueta-no-ar {
-    color: var(--verde);
-}
-
-.cartao .detalhe {
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid var(--borda);
-    font-size: 0.95rem;
-}
-
-.link-projeto {
+.projeto-site {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    align-self: flex-start;
-    min-height: 44px;
-    margin-top: 8px;
-    color: var(--azul-claro);
-    font-weight: 600;
+    gap: 12px;
+    min-height: 48px;
+    color: var(--texto);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     text-decoration: none;
 }
 
-.link-projeto:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.projeto-site:hover {
+    color: var(--azul-claro);
+}
+
+.icone-site {
+    width: 34px;
+    height: 34px;
+    flex: none;
+}
+
+.projeto-site .icone-p {
+    color: var(--azul-claro);
+}
+
+@media (max-width: 380px) {
+    .projeto-site {
+        gap: 8px;
+        font-size: 1rem;
+    }
+
+    .icone-site {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.estado::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.cartao .estado-no-ar {
+    color: var(--verde);
+}
+
+.cartao .estado-dev {
+    color: #F5C26B;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: auto;
+    padding-top: 18px;
+    font-size: 0.92rem;
+}
+
+.cartao .tags {
+    color: var(--azul-claro);
 }
 
 .icone-p {
@@ -379,8 +417,117 @@ ul[role="list"] {
 
 /* ---------- Contato ---------- */
 
-.contato {
+.form {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px;
+    background: var(--cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+.form-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.campo-largo {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: rgba(8, 26, 58, 0.6);
+    color: var(--texto);
+    font: inherit;
+    transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.campo select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--suave) 50%), linear-gradient(135deg, var(--suave) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+}
+
+.campo select option {
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.campo input::placeholder {
+    color: rgba(169, 186, 219, 0.55);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(111, 174, 255, 0.25);
+}
+
+.campo [aria-invalid="true"] {
+    border-color: #FF8A8A;
+}
+
+.campo-oculto {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.form-nota {
+    margin: 18px 0 20px;
+    color: var(--suave);
+    font-size: 0.88rem;
+}
+
+.form .botao {
+    width: 100%;
+}
+
+.form-status {
+    min-height: 1.6em;
+    margin-top: 14px;
+    font-size: 0.95rem;
     text-align: center;
+}
+
+.form-status-ok {
+    color: var(--verde);
+}
+
+.form-status-erro {
+    color: #FF9C9C;
 }
 
 /* ---------- Rodapé ---------- */
@@ -430,6 +577,16 @@ ul[role="list"] {
     color: var(--texto);
 }
 
+.rodape-email {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--texto);
+    font-weight: 500;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+}
+
 /* ---------- 404 ---------- */
 
 .erro {
@@ -467,6 +624,18 @@ ul[role="list"] {
 
     .cartao {
         padding: 24px;
+    }
+
+    .form {
+        padding: 22px 18px;
+    }
+
+    .form-grade {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-lente {
+        width: 210px;
     }
 
     .botao {

@@ -1,14 +1,22 @@
 {
-  // Cloudflare Workers com assets estáticos. Nada aqui executa código.
-  // Só a pasta ./public é publicada: .git, brand/ e arquivos de projeto ficam de fora.
+  // Cloudflare Workers: arquivos estáticos de ./public + a rota POST /api/contato.
+  // Só ./public é publicado: .git, brand/ e arquivos de projeto ficam de fora.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "insightops-site",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
   },
+  // Envio do formulário pelo Email Routing de insightops.com.br.
+  // O destino precisa estar verificado em Email Routing › Destination addresses.
+  "send_email": [
+    { "name": "CONTATO", "destination_address": "insightops.br@gmail.com" }
+  ],
   "observability": {
     "enabled": true
   }
