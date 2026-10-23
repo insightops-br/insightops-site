@@ -33,7 +33,7 @@ npx wrangler dev
 
 ## Publicar (homologação antes de produção)
 
-O Cloudflare Workers Builds está ligado ao repositório `insigthops/insightops-site`.
+O Cloudflare Workers Builds está ligado ao repositório `insightops-br/insightops-site` (https://github.com/insightops-br/insightops-site).
 
 1. Trabalhe numa branch (ex.: `git switch -c ajuste-x`), faça commit e `git push -u origin ajuste-x`.
 2. O Cloudflare gera uma URL de prévia para a branch. Teste nela (celular incluso).
