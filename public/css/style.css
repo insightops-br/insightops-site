@@ -331,6 +331,12 @@ ul[role="list"] {
     height: auto;
 }
 
+.projeto-site .logo-lente {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 28px);
+}
+
 .projeto-site {
     display: inline-flex;
     align-items: center;
