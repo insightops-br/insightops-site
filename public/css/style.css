@@ -587,6 +587,59 @@ ul[role="list"] {
     text-decoration-color: rgba(255, 255, 255, 0.35);
 }
 
+/* ---------- Privacidade ---------- */
+
+.texto-legal {
+    color: var(--suave);
+    line-height: 1.7;
+}
+
+.texto-legal h1 {
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.texto-legal h1,
+.texto-legal h2 {
+    text-align: left;
+}
+
+.texto-legal h2 {
+    margin: 36px 0 10px;
+    color: var(--texto);
+    font-size: 1.2rem;
+}
+
+.texto-legal p + p {
+    margin-top: 12px;
+}
+
+.texto-legal a {
+    color: var(--azul-claro);
+    text-underline-offset: 3px;
+}
+
+.texto-legal .atualizado {
+    font-size: 0.9rem;
+}
+
+.texto-legal .voltar {
+    margin-top: 40px;
+}
+
+.form-nota a,
+.rodape-links a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+.rodape-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
 /* ---------- 404 ---------- */
 
 .erro {

@@ -12,6 +12,12 @@
     "html_handling": "auto-trailing-slash",
     "run_worker_first": ["/api/*"]
   },
+  // Limites do formulário (aproximados, por região do Cloudflare):
+  // até 3 envios por minuto por IP e 10 por minuto no total.
+  "ratelimits": [
+    { "name": "LIMITE_IP", "namespace_id": "1001", "simple": { "limit": 3, "period": 60 } },
+    { "name": "LIMITE_GERAL", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }
+  ],
   // Envio do formulário pelo Email Routing de insightops.com.br.
   // O destino precisa estar verificado em Email Routing › Destination addresses.
   "send_email": [

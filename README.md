@@ -8,7 +8,8 @@ Site institucional da InsightOps. Sem dependências e sem build: o que está em 
 public/            tudo o que é publicado (e só isso)
   index.html       página única
   404.html         página de erro (servida pelo Cloudflare para endereços inexistentes)
-  obrigado.html    confirmação do formulário quando o navegador está sem JavaScript
+  privacidade.html aviso de privacidade (LGPD), ligado no formulário e no rodapé
+  obrigado.html    resposta neutra devolvida a robôs (não é usada por visitantes)
   css/ js/         estilo e o único script (ano do rodapé e envio do formulário)
   assets/img/      logo.svg, lente-humana.svg, favicons e imagem de compartilhamento (og.png)
   _headers         headers de segurança e cache (Cloudflare)
@@ -48,9 +49,12 @@ Ao mudar `css/style.css` ou `js/main.js`, atualize o `?v=AAAAMMDD` nas tags do `
 
 ## Formulário de contato
 
-- O formulário envia para `POST /api/contato`. O Worker valida os campos, descarta robôs (campo invisível e envio em menos de 3 s) e manda a mensagem para **insightops.br@gmail.com** pelo Cloudflare Email Routing (binding `CONTATO` no `wrangler.jsonc`). O remetente é `formulario@insightops.com.br` e o "Responder" vai direto para quem escreveu.
+- O formulário envia para `POST /api/contato`. O Worker aceita só envios vindos do próprio site (Origin/Referer), limita a frequência (3 por minuto por IP e 10 por minuto no total, bindings `LIMITE_IP` e `LIMITE_GERAL`), limita o tamanho a 20 KB, exige o carimbo de tempo do script da página, valida os campos, descarta robôs (campo invisível e envio em menos de 3 s) e manda a mensagem para **insightops.br@gmail.com** pelo Cloudflare Email Routing (binding `CONTATO` no `wrangler.jsonc`). O remetente é `formulario@insightops.com.br` e o "Responder" vai direto para quem escreveu.
 - Requisitos no Cloudflare: Email Routing ativo em insightops.com.br e o endereço de destino verificado (já estão). Para trocar o destino, mude `destination_address` no `wrangler.jsonc` e `CONTATO_DESTINO` (opcional) nas variáveis do Worker. O novo endereço precisa estar verificado no Email Routing.
 - Os assuntos ficam em `ASSUNTOS` no `src/worker.js` e nas `<option>` do `index.html`. Mantenha os dois iguais.
+- O formulário precisa de JavaScript. Sem ele, a pessoa recebe um aviso com o WhatsApp e o e-mail.
+- Se um dia o spam passar dessas barreiras, o próximo passo é o Cloudflare Turnstile (gratuito e quase sempre invisível), não um CAPTCHA tradicional.
+- Ao mudar campos, prestadores ou o uso dos dados, atualize `privacidade.html`.
 - Os logs de envio aparecem em Workers & Pages › insightops-site › Logs. O conteúdo das mensagens não é registrado.
 
 ## Domínios
